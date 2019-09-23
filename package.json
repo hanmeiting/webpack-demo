@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack" //打包命令   build可以换别的名字
+    "build": "webpack --mode development",
+    "build_online":"webpack --mode production"
   },
   "keywords": [],
   "author": "",
