@@ -1,2 +1,5 @@
+// import "./css/index.css"
+import "./css/index.less"
+
 var oRoot  = document.querySelector("#root");
-oRoot.innerHTML = "hanting`s first webpack demo";
+oRoot.innerHTML = "first webpack demo";
