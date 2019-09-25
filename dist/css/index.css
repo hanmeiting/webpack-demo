@@ -1,6 +1,24 @@
-body{
-	background: url(../images/49e46e0c15b8c88f9a20daf4246b8777.png) no-repeat;
+body {
+  background: #e92323;
+  color: #FFF;
 }
-#root{
-	color: #fff;
+
+body ul {
+  list-style: none;
+}
+
+body ul li {
+  color: #ccc;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 30px;
+}
+
+body {
+  background: url(../images/49e46e0c15b8c88f9a20daf4246b8777.png) no-repeat;
+}
+
+#root {
+  color: #fff;
+  /*transform: rotate(45deg);*/
 }
