@@ -1,5 +1,4 @@
 import "./css/index.css"
 import "./css/index.less"
-
-var oRoot  = document.querySelector("#root");
-oRoot.innerHTML = "first webpack demo";
+import {a,b} from "./js/index.js"
+console.log(a**b);
