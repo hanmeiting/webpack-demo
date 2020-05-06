@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const PurifyCssWebpack = require("purifycss-webpack");
 module.exports = {
 	//入口文件
 	entry:{
@@ -26,10 +27,26 @@ module.exports = {
 	module:{
 		rules:[{
 			test:/\.css$/,
+			// use:[
+			// 	{loader:"style-loader"},
+			// 	{loader:"css-loader"},
+			// 	{loader:"postcss-loader"}
+			// ]
 			use:ExtractTextPlugin.extract({
 				fallback:"style-loader",
-				use:"css-loader",
+				use:["css-loader","postcss-loader"],
 				publicPath:"../" //解决css背景图路径
+			})
+		},{
+			test:/\.less$/,
+			// use:[
+			// 	{loader:"style-loader"},
+			// 	{loader:"css-loader"},
+			// 	{loader:"less-loader"}
+			// ]
+			use:ExtractTextPlugin.extract({
+				fallback:"style-loader",
+				use:["css-loader","less-loader"]
 			})
 		},{
 			test:/\.(png|jpe?g|gif|svg)$/,
@@ -40,9 +57,6 @@ module.exports = {
 					outputPath:"images" //图片打包出去的目录
 				}
 			}]
-		},{
-			test:/\.less$/,
-			use:['style-loader','css-loader','less-loader']
 		}]
 	},
 	
@@ -60,6 +74,9 @@ module.exports = {
 			}
 		}),
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin("css/index.css")
+		new ExtractTextPlugin("css/index.css"),
+		new PurifyCssWebpack({
+			paths:path.join(__dirname,"/dist/index.css")
+		})
 	]
 }
